@@ -58,7 +58,10 @@ Contributing
 Changelog
 =========
 
-  - 1.0.0: Initial release
+  - 1.0.1:
+    * Fixing a flaw where `deseiralizer` might be `nil` and `ActiveSupport` adds a `#load` method to `NilClass` which apparently fucking looks up a file based on the name, which means the payload gets looked up as a file. Holy shit.
+  - 1.0.0:
+    * Initial release
 
 
 License
