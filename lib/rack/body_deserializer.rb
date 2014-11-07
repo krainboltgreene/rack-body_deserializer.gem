@@ -15,10 +15,14 @@ module Rack
 
     def call(previous_state)
       @state = previous_state
-      if content_type && stringable?
+      if deserializable?
         state[RACK_KEY] = deserializer.load(input)
       end
       stack.call(state)
+    end
+
+    private def deserializable?
+      content_type && deserializer && stringable?
     end
 
     private def input
